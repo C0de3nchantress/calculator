@@ -17,6 +17,7 @@ function divide(num1, num2) {
 let num1;
 let operator;
 let num2;
+let shouldResetDisplay = false;
 
 function operate(num1, operator, num2) {
     if (operator == "+") {
@@ -37,7 +38,10 @@ function updateDisplay() {
     const nums = document.querySelectorAll(".num");
     nums.forEach((num) => {
         num.addEventListener("click", () => {
-            if (display == 0) {
+            if (shouldResetDisplay){
+                display = num.textContent;
+                shouldResetDisplay = false;
+            } else if (display == 0) {
                 display = num.textContent
             } else {
                 display += num.textContent
@@ -48,3 +52,23 @@ function updateDisplay() {
 }
 
 updateDisplay();
+
+const operators = document.querySelectorAll(".operator");
+
+operators.forEach((element) => {
+
+    element.addEventListener("click", () => {
+        if (operator != null) {
+            num2 = parseFloat(display)
+            display = operate(num1, operator, num2).toString();
+            screen.textContent = display;
+            num1 = parseFloat(display);
+        } else {
+            num1 = parseFloat(display);
+            display = element.textContent;
+            screen.textContent = display;
+            operator = display;
+            shouldResetDisplay = true;
+        }
+    })
+})
