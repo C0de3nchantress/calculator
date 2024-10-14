@@ -37,7 +37,12 @@ function updateDisplay() {
     const nums = document.querySelectorAll(".num");
     nums.forEach((num) => {
         num.addEventListener("click", () => {
-            screen.textContent = num.textContent;
+            if (display == 0) {
+                display = num.textContent
+            } else {
+                display += num.textContent
+            }
+            screen.textContent = display;
         });
     });
 }
