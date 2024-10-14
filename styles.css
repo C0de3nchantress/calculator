@@ -16,13 +16,24 @@ html, body {
 
 .buttons {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
+    align-items: center;
 }
 
-.operators {
+.row {
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    gap: 24px;
+    align-items: center;
+}
+
+.fifth.row {
+    display: flex;
+    align-items: center;
+}
+
+.num, .operator {
+    width: 24px;
+    height: 24px;
 }
 
 .screen {

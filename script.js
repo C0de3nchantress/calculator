@@ -29,3 +29,17 @@ function operate(num1, operator, num2) {
         return divide(num1, num2);
     }
 }
+
+const screen = document.querySelector(".screen");
+let display = screen.textContent;
+
+function updateDisplay() {
+    const nums = document.querySelectorAll(".num");
+    nums.forEach((num) => {
+        num.addEventListener("click", () => {
+            screen.textContent = num.textContent;
+        });
+    });
+}
+
+updateDisplay();
